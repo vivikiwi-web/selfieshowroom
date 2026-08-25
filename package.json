@@ -1,0 +1,22 @@
+{
+  "name": "sober-child",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sober child theme asset build (SCSS + JS)",
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "sass src/scss:assets/css --style=expanded --no-source-map",
+    "build:js": "esbuild src/js/main.js --bundle --outfile=assets/js/main.js --target=es2018",
+    "watch": "npm-run-all -p watch:css watch:js",
+    "watch:css": "sass src/scss:assets/css --style=expanded --no-source-map --watch",
+    "watch:js": "esbuild src/js/main.js --bundle --outfile=assets/js/main.js --target=es2018 --watch",
+    "prod": "npm run prod:css && npm run prod:js",
+    "prod:css": "sass src/scss:assets/css --style=compressed --no-source-map",
+    "prod:js": "esbuild src/js/main.js --bundle --minify --outfile=assets/js/main.js --target=es2018"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.85.0"
+  }
+}

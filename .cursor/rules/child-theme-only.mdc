@@ -1,0 +1,31 @@
+---
+description: Only modify the Sober child theme; never edit parent theme, plugins, or WordPress core
+alwaysApply: true
+---
+
+# Child Theme Only
+
+All customizations for this site go in `sober-child` only.
+
+## Do
+
+- Edit files under `wp-content/themes/sober-child/`
+- Override parent templates by copying them into the child theme (same relative path)
+- Override WooCommerce templates via `sober-child/woocommerce/...`
+- Override WPBakery / VC templates via `sober-child/vc_templates/...`
+- Add hooks, enqueues, and filters in `sober-child/functions.php` (or includes loaded from there)
+- Add CSS/JS under `sober-child/src/` (scss/js), compile to `assets/`, enqueue from the child
+## Do not
+
+- Edit `wp-content/themes/sober/` (parent theme)
+- Edit `wp-content/plugins/` (including `js_composer`, `woocommerce`, `sober-addons`)
+- Edit WordPress core
+- Patch parent files "temporarily" — use child overrides or hooks instead
+
+## Override pattern
+
+1. Find the template/hook in the parent theme or plugin (read-only).
+2. Implement the change in `sober-child` via template copy, hook, or enqueue.
+3. Prefer hooks/filters over copying large templates when possible.
+
+If a change seems to require editing the parent or a plugin, stop and explain the child-theme approach instead.

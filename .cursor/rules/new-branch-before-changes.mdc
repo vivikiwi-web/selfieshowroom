@@ -1,0 +1,28 @@
+---
+description: Always create a new git branch before making any code changes
+alwaysApply: true
+---
+
+# New Branch Before Changes
+
+Before editing, creating, or deleting project files, create and switch to a new git branch.
+
+## Required workflow
+
+1. Check status: `git status` and current branch (`git branch --show-current`).
+2. If still on `main` / `master` (or the repo’s default branch), create a new branch first.
+3. Branch name: short, kebab-case, describes the change (e.g. `fix/cart-totals`, `feat/child-asset-pipeline`).
+4. Create and switch: `git checkout -b <branch-name>` (or `git switch -c <branch-name>`).
+5. Only then make file changes.
+
+## Exceptions
+
+- User explicitly says to work on the current branch or names an existing branch to use.
+- Change is limited to Cursor config under `.cursor/` and the user did not ask for a feature/fix branch.
+- Read-only tasks (explain, search, review) — no branch needed until writes begin.
+
+## Do not
+
+- Commit or push unless the user asks.
+- Force-push or rewrite history unless the user explicitly requests it.
+- Start coding on `main` / `master` “just for a quick fix.”
