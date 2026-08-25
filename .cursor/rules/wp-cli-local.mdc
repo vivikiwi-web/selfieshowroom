@@ -1,0 +1,30 @@
+---
+description: Use sober-child/bin/wp for WP-CLI against the Local selfieshowroom site
+alwaysApply: true
+---
+
+# WP-CLI (Local)
+
+For `http://selfieshowroom.local/`, do **not** call bare `wp` — Local MySQL needs the site socket.
+
+## Use
+
+```bash
+cd wp-content/themes/sober-child
+./bin/wp option get siteurl
+./bin/wp theme list
+./bin/wp plugin list
+```
+
+The wrapper selects Local’s PHP, MySQL unix socket, `--path` to `app/public`, and `--url=http://selfieshowroom.local/`.
+
+## Requirements
+
+- Local site **selfieshowroom** must be running
+- System WP-CLI at `/usr/local/bin/wp` (falls back to Local’s `wp-cli.phar`)
+
+## Do not
+
+- Run plain `wp` from the theme or public dir (DB connection will fail)
+- Edit `wp-config.php` only to make WP-CLI work
+- Change parent theme / plugins via WP-CLI unless the user explicitly asks

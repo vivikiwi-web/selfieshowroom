@@ -4,10 +4,8 @@
  * Edit source files here. Compiled output: assets/js/main.js
  */
 
-(function () {
-	'use strict';
+import { initHero } from './hero.js';
 
-	document.addEventListener('DOMContentLoaded', function () {
-		// Child theme front-end scripts.
-	});
-})();
+document.addEventListener('DOMContentLoaded', () => {
+	initHero();
+});
