@@ -4,3 +4,236 @@
  *
  * Edit source files here. Compiled output: assets/css/main.css
  */
+.ss-hero {
+  --ss-hero-text: #f7f4f0;
+  --ss-hero-text-muted: rgba(247, 244, 240, 0.82);
+  --ss-hero-image: none;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-height: clamp(650px, 80vh, 900px);
+  overflow: hidden;
+  color: var(--ss-hero-text);
+  background-color: #2a2724;
+}
+
+.ss-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--ss-hero-image);
+  background-repeat: no-repeat;
+  background-position: 55% center;
+  background-size: cover;
+  animation: ss-hero-bg 16s linear both;
+}
+
+.ss-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1;
+  background: linear-gradient(90deg, rgba(20, 18, 16, 0.48) 0%, rgba(20, 18, 16, 0.28) 34%, rgba(20, 18, 16, 0.08) 55%, rgba(20, 18, 16, 0) 70%);
+}
+
+.ss-hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  padding: clamp(48px, 8vh, 96px) clamp(20px, 8vw, 9vw);
+  box-sizing: border-box;
+}
+
+.ss-hero__content {
+  max-width: min(640px, 45%);
+  width: 100%;
+}
+
+.ss-hero__brand {
+  margin: 0 0 1.25rem;
+  font-family: inherit;
+  font-size: clamp(11px, 0.78vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--ss-hero-text-muted);
+  opacity: 0;
+  animation: ss-hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.05s both;
+}
+
+.ss-hero__heading {
+  margin: 0 0 2.15rem;
+  font-family: "Cormorant Garamond", "Times New Roman", Times, serif;
+  font-size: clamp(56px, 5vw, 88px);
+  font-weight: 400;
+  line-height: 0.94;
+  letter-spacing: -0.012em;
+  color: var(--ss-hero-text);
+}
+
+.ss-hero__heading-main,
+.ss-hero__heading-accent {
+  display: block;
+  opacity: 0;
+}
+
+.ss-hero__heading-main {
+  animation: ss-hero-rise 1.25s cubic-bezier(0.22, 1, 0.36, 1) 1.28s both;
+}
+
+.ss-hero__heading-accent {
+  margin-top: 0.06em;
+  font-family: "Cormorant Garamond", "Times New Roman", Times, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.04em;
+  letter-spacing: -0.018em;
+  animation: ss-hero-rise 1.35s cubic-bezier(0.22, 1, 0.36, 1) 1.55s both;
+}
+
+.ss-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 54px;
+  padding: 0 36px;
+  border: 1px solid rgba(247, 244, 240, 0.92);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ss-hero-text);
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: ss-hero-rise 1.15s cubic-bezier(0.22, 1, 0.36, 1) 2.05s both;
+  transition: background-color 280ms ease, color 280ms ease, border-color 280ms ease;
+}
+
+.ss-hero__cta:hover,
+.ss-hero__cta:focus-visible {
+  background-color: var(--ss-hero-text);
+  border-color: var(--ss-hero-text);
+  color: #141210;
+  text-decoration: none;
+}
+
+.ss-hero__cta:focus-visible {
+  outline: 2px solid var(--ss-hero-text);
+  outline-offset: 3px;
+}
+
+.ss-hero__cta--static {
+  cursor: default;
+  pointer-events: none;
+}
+
+@keyframes ss-hero-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes ss-hero-bg {
+  0% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  7.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.028);
+  }
+}
+@media (max-width: 1199px) {
+  .ss-hero {
+    min-height: clamp(650px, 78vh, 750px);
+  }
+  .ss-hero__media {
+    background-position: 60% center;
+  }
+  .ss-hero__content {
+    max-width: min(520px, 50%);
+  }
+  .ss-hero__heading {
+    font-size: clamp(48px, 6vw, 68px);
+  }
+  .ss-hero__inner {
+    padding-left: clamp(24px, 6vw, 56px);
+    padding-right: clamp(24px, 6vw, 56px);
+  }
+}
+@media (max-width: 767px) {
+  .ss-hero {
+    min-height: max(680px, 85svh);
+    align-items: flex-end;
+  }
+  .ss-hero__media {
+    background-position: 70% center;
+  }
+  .ss-hero__overlay {
+    background: linear-gradient(180deg, rgba(20, 18, 16, 0) 0%, rgba(20, 18, 16, 0.14) 40%, rgba(20, 18, 16, 0.5) 76%, rgba(20, 18, 16, 0.62) 100%);
+  }
+  .ss-hero__inner {
+    align-items: flex-end;
+    padding: 0 24px 48px;
+  }
+  .ss-hero__content {
+    max-width: 100%;
+  }
+  .ss-hero__brand {
+    margin-bottom: 0.9rem;
+    letter-spacing: 0.18em;
+  }
+  .ss-hero__heading {
+    margin-bottom: 1.5rem;
+    font-size: clamp(42px, 12vw, 58px);
+    line-height: 0.95;
+  }
+  .ss-hero__cta {
+    min-height: 52px;
+    padding: 0 28px;
+  }
+}
+@media (max-width: 390px) {
+  .ss-hero__inner {
+    padding: 0 20px 40px;
+  }
+  .ss-hero__heading {
+    font-size: clamp(38px, 11.5vw, 48px);
+  }
+  .ss-hero__cta {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ss-hero__media,
+  .ss-hero__brand,
+  .ss-hero__heading-main,
+  .ss-hero__heading-accent,
+  .ss-hero__cta {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}

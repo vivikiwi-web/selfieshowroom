@@ -7,9 +7,11 @@ set -euo pipefail
 
 SITE_NAME="selfieshowroom"
 SITE_URL="http://selfieshowroom.local/"
-LOCAL_SITES_JSON="${HOME}/Library/Application Support/Local/sites.json"
-LOCAL_RUN_DIR="${HOME}/Library/Application Support/Local/run"
-LOCAL_SERVICES="${HOME}/Library/Application Support/Local/lightning-services"
+# Resolve real home even if caller polluted $HOME.
+USER_HOME="$(perl -e 'print((getpwuid($<))[7])')"
+LOCAL_SITES_JSON="${USER_HOME}/Library/Application Support/Local/sites.json"
+LOCAL_RUN_DIR="${USER_HOME}/Library/Application Support/Local/run"
+LOCAL_SERVICES="${USER_HOME}/Library/Application Support/Local/lightning-services"
 WP_BIN="${WP_BIN:-/usr/local/bin/wp}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

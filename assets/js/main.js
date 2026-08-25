@@ -1,8 +1,10 @@
 (() => {
+  // src/js/hero.js
+  function initHero() {
+  }
+
   // src/js/main.js
-  (function() {
-    "use strict";
-    document.addEventListener("DOMContentLoaded", function() {
-    });
-  })();
+  document.addEventListener("DOMContentLoaded", () => {
+    initHero();
+  });
 })();

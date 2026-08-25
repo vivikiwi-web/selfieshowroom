@@ -1,0 +1,59 @@
+---
+description: Guidance for distinctive, intentional UI design, typography, visual direction, and non-template-like product interfaces. Apply when building or reshaping UI, choosing type/palette/layout, writing interface copy, or adding motion. Skip WP-CLI, backend hooks, and non-visual PHP.
+globs: src/scss/**/*.scss,src/js/**/*.js,woocommerce/**/*.php,vc_templates/**/*.php,template-parts/**/*.php
+alwaysApply: false
+---
+
+# Frontend Design
+
+Derived from [Anthropic frontend-design](https://github.com/anthropics/skills/tree/main/skills/frontend-design) (Apache-2.0). Adapted for Selfie Showroom / `sober-child`. Full workflow: `.cursor/skills/frontend-design/SKILL.md`.
+
+Work as a design lead hired for a distinctive point of view. Make opinionated palette, type, and layout choices specific to this brief, and take one aesthetic risk you can justify.
+
+## Scope
+
+- **Use** for new UI, visual redesign, typography, motion, and interface copy.
+- **Skip** WP-CLI, enqueue-only plumbing, non-visual PHP, and one-line functional fixes.
+- Implement only in `sober-child`. Parent `sober/`, plugins, and core are read-only.
+
+## Paths
+
+| Need | Where |
+|------|--------|
+| Tokens | `src/scss/abstracts/_variables.scss` (`$ss-*`) |
+| Component CSS | `src/scss/components/_*.scss` → import in `src/scss/main.scss` |
+| Motion | `src/js/` |
+| Woo / VC markup | `woocommerce/`, `vc_templates/` |
+| Enqueue fonts / assets | `functions.php` |
+| Compiled CSS/JS | `assets/` — do not hand-edit; `npm run watch` / `npm run build` |
+
+Stay compatible with Sober / Woo / WPBakery class names unless the brief replaces the identity. Load fonts from `functions.php`, not CSS `@import`.
+
+## Ground it in the subject
+
+If the brief is vague, name the subject, audience, and the page's single job before designing. Distinctive choices come from that world's materials and vernacular. Default subject: Selfie Showroom (fashion / showroom e-commerce) unless the brief says otherwise. Use real content, not lorem.
+
+## Design principles
+
+- The **hero is a thesis**: lead with the most characteristic thing in the subject's world. A big number + small label + gradient accent is the template answer — use it only if it is truly best.
+- **Typography carries personality**: pair display and body deliberately; set a real type scale. Type treatment should be memorable, not a neutral vehicle.
+- **Structure is information**: eyebrows, numbers, dividers must encode something true. `01 / 02 / 03` only if order is actually a sequence the reader needs.
+- **Motion with intent**: one orchestrated moment beats scattered effects. Honor `prefers-reduced-motion`. Extra animation often reads as AI-generated.
+- Match complexity to the vision. Maximalism needs craft; minimalism needs precision.
+
+## Process (two passes)
+
+AI defaults to avoid unless the brief asks for them: (1) cream `#F4F1EA` + serif + terracotta; (2) near-black + acid-green/vermilion; (3) broadsheet hairlines, zero radius, dense columns. The brief's own words always win.
+
+1. **Plan** a compact token system: **color** (4–6 named hexes → `$ss-*`), **type** (display with restraint, body, optional utility), **layout** (one-sentence concept + ASCII wireframe), **signature** (the one thing the page is remembered by).
+2. **Critique** the plan: if any part is the generic default you would produce for any similar page, revise it and say why. Then build from the plan only.
+3. Watch CSS specificity: child classes should not cancel each other (e.g. `.section` vs `.cta` padding). Prefer child BEM-style classes over `!important` against parent Sober selectors.
+4. Keep planning in thinking; show the user work you are confident will delight them.
+
+## Restraint
+
+Spend boldness in one place — the signature — and keep the rest quiet. Cut decoration that does not serve the brief. Quality floor: responsive to mobile, visible keyboard focus, reduced motion. Critique while building (screenshots if available); remove one accessory before shipping. Verify the changed flow in the browser, desktop and mobile.
+
+## Interface writing
+
+Copy is design material. Write from the user's side of the screen; name what people control, not the system. Active voice: "Save changes," not "Submit." Same action name through the flow. Errors explain what happened and how to fix it; empty states invite an action. Sentence case, no filler, one job per element. PHP strings: child text domain + escape on output.
