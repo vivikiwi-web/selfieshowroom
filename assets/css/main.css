@@ -243,3 +243,51 @@
     transform: none;
   }
 }
+.newslatter-holder {
+  margin: 0 !important;
+  display: flex;
+  position: relative;
+  isolation: isolate;
+}
+.newslatter-holder .wpcf7-form-control-wrap {
+  flex-grow: 1;
+}
+.newslatter-holder .wpcf7-form-control {
+  width: unset;
+  min-width: unset;
+  line-height: unset;
+  text-transform: unset;
+}
+.wpcf7-form.submitting .newslatter-holder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: auto;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.newslatter-holder .wpcf7-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  margin: 0;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  background-color: #f7f4f0;
+}
+.newslatter-holder .wpcf7-spinner::before {
+  background-color: #252525;
+}
+.newslatter-holder .wpcf7-response-output {
+  width: fit-content;
+}
+
+@media (max-width: 767px) {
+  .newslatter-holder {
+    gap: 16px;
+  }
+  .newslatter-holder input[type=email] {
+    width: 100% !important;
+  }
+}

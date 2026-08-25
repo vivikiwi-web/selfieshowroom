@@ -1,0 +1,57 @@
+@use "../abstracts/variables" as *;
+
+.newslatter-holder {
+	margin: 0 !important;
+	display: flex;
+	position: relative;
+	isolation: isolate;
+
+	.wpcf7-form-control-wrap {
+		flex-grow: 1;
+	}
+
+	.wpcf7-form-control {
+		width: unset;
+		min-width: unset;
+		line-height: unset;
+		text-transform: unset;
+	}
+
+	.wpcf7-form.submitting &::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		pointer-events: auto;
+		background-color: rgba(#fff, 0.6);
+	}
+
+	.wpcf7-spinner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 2;
+		margin: 0;
+		transform: translate(-50%, -50%);
+		opacity: 1;
+		background-color: $ss-color-ivory;
+
+		&::before {
+			background-color: $ss-color-charcoal;
+		}
+	}
+
+	.wpcf7-response-output {
+		width: fit-content;
+	}
+}
+
+@media (max-width: 767px) {
+	.newslatter-holder {
+		gap: 16px;
+
+		input[type="email"] {
+			width: 100% !important;
+		}
+	}
+}
