@@ -189,7 +189,7 @@
 }
 @media (max-width: 767px) {
   .ss-hero {
-    min-height: max(680px, 85svh);
+    min-height: 65svh;
     align-items: flex-end;
   }
   .ss-hero__media {
