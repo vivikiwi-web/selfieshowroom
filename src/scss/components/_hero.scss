@@ -66,7 +66,7 @@
 
 .ss-hero__brand {
 	margin: 0 0 1.25rem;
-	font-family: inherit;
+	font-family: $ss-font-body;
 	font-size: clamp(11px, 0.78vw, 13px);
 	font-weight: 400;
 	letter-spacing: 0.22em;
@@ -79,7 +79,7 @@
 
 .ss-hero__heading {
 	margin: 0 0 2.15rem;
-	font-family: "Cormorant Garamond", "Times New Roman", Times, serif;
+	font-family: $ss-font-display;
 	font-size: clamp(56px, 5vw, 88px);
 	font-weight: 400;
 	line-height: 0.94;
@@ -99,7 +99,7 @@
 
 .ss-hero__heading-accent {
 	margin-top: 0.06em;
-	font-family: "Cormorant Garamond", "Times New Roman", Times, serif;
+	font-family: $ss-font-display;
 	font-style: italic;
 	font-weight: 400;
 	font-size: 1.04em;
@@ -118,7 +118,7 @@
 	border-radius: 0;
 	background: transparent;
 	color: var(--ss-hero-text);
-	font-family: inherit;
+	font-family: $ss-font-body;
 	font-size: 11px;
 	font-weight: 500;
 	letter-spacing: 0.16em;
@@ -133,8 +133,17 @@
 		border-color 280ms ease;
 }
 
-.ss-hero__cta:hover,
-.ss-hero__cta:focus-visible {
+.ss-hero a.ss-hero__cta:link,
+.ss-hero a.ss-hero__cta:visited {
+	color: var(--ss-hero-text);
+}
+
+.ss-hero__cta span {
+	color: inherit;
+}
+
+.ss-hero a.ss-hero__cta:hover,
+.ss-hero a.ss-hero__cta:focus-visible {
 	background-color: var(--ss-hero-text);
 	border-color: var(--ss-hero-text);
 	color: $ss-color-ink;

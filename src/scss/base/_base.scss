@@ -1,16 +1,30 @@
-// Base / global child-theme overrides.
+@use "../abstracts/variables" as *;
 
-// Parent hardcodes Sofia Pro / Poppins; Quicksand covers Lithuanian glyphs.
+// Body / UI.
 body,
 button,
 input,
 select,
 textarea,
 .footer-widgets .widget-title,
-.shop-sidebar .widget .widget-title,
 .sober-section-heading__more,
-.vc_custom_heading .heading-link,
-.woocommerce.product-style-3 .side-products h2,
+.vc_custom_heading .heading-link {
+	font-family: $ss-font-body;
+}
+
+// Headings and title treatments.
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
 .vc_custom_heading,
 .sober-section-heading,
 .sober-banner-image__title,
@@ -24,9 +38,6 @@ textarea,
 .sober-banner4 .banner-content h6,
 .sober-banner-simple__text,
 .sober-category-banner .banner-title,
-.sober-chart .text,
-.sober-pricing-table .table-header .pricing,
-.sober-countdown .box,
 .sober-product .product-title,
 .sober-collection-carousel__item-title,
 .sober-image-slider__item-text,
@@ -36,16 +47,14 @@ textarea,
 .sober-popup .popup-content h3,
 .sober-popup .popup-content h4,
 .widget-title,
+.shop-sidebar .widget .widget-title,
 .page-header .page-title,
 .project-header .project-title,
 .portfolio-items .portfolio .project-title,
 .woocommerce div.product .product_title,
-.woocommerce div.product.layout-style-5 p.price,
-.woocommerce div.product.layout-style-5 span.price,
-.woocommerce div.product.layout-style-6 p.price,
-.woocommerce div.product.layout-style-6 span.price,
 .woocommerce .upsells h2,
 .woocommerce .related h2,
+.woocommerce.product-style-3 .side-products h2,
 .wcboost-products-compare-popup__title {
-	font-family: Quicksand, sans-serif;
+	font-family: $ss-font-display;
 }

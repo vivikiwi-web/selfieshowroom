@@ -1,80 +1,74 @@
 <?php
 /**
- * Load Quicksand instead of Sofia Pro / Poppins (Lithuanian glyph coverage).
+ * Site type: Cormorant Garamond headings, Poppins body.
+ * Do not load Sofia Pro, Quicksand, or Raleway.
  *
  * @package Sober_Child
  */
 
 defined( 'ABSPATH' ) || exit;
 
-add_filter( 'sober_get_option', 'sober_child_typography_use_quicksand' );
-add_filter( 'kirki_get_value', 'sober_child_typography_use_quicksand' );
-add_filter( 'gettext_with_context', 'sober_child_disable_poppins_google_font', 10, 4 );
-add_filter( 'kirki_enqueue_google_fonts', 'sober_child_remove_kirki_poppins_sofia' );
+add_filter( 'sober_get_option', 'sober_child_typography_map_fonts', 10, 2 );
+add_filter( 'kirki_get_value', 'sober_child_typography_map_fonts', 10, 2 );
+add_filter( 'kirki_enqueue_google_fonts', 'sober_child_remove_unused_google_fonts' );
 add_action( 'wp_enqueue_scripts', 'sober_child_enqueue_fonts', 15 );
 add_action( 'enqueue_block_editor_assets', 'sober_child_enqueue_fonts', 20 );
 
 /**
- * Replace Sofia Pro and Poppins with Quicksand in typography option arrays.
+ * Customizer settings that should use the display serif.
  *
- * @param mixed $value Option value.
+ * @return string[]
+ */
+function sober_child_heading_font_settings() {
+	return array(
+		'typo_h1',
+		'typo_h2',
+		'typo_h3',
+		'typo_h4',
+		'typo_h5',
+		'typo_h6',
+		'typo_page_header_title',
+		'typo_page_header_minimal_title',
+		'type_widget_title',
+		'type_product_title',
+		'typo_woocommerce_headers',
+	);
+}
+
+/**
+ * Map heading settings to Cormorant and everything else to Poppins.
+ *
+ * @param mixed  $value Option value.
+ * @param string $name  Option / field name.
  * @return mixed
  */
-function sober_child_typography_use_quicksand( $value ) {
+function sober_child_typography_map_fonts( $value, $name = '' ) {
 	if ( ! is_array( $value ) || empty( $value['font-family'] ) ) {
 		return $value;
 	}
 
-	$family = $value['font-family'];
-
-	if ( 'Sofia Pro' === $family || 'Poppins' === $family ) {
-		$value['font-family'] = 'Quicksand';
+	if ( in_array( (string) $name, sober_child_heading_font_settings(), true ) ) {
+		$value['font-family'] = 'Cormorant Garamond';
+		return $value;
 	}
+
+	$value['font-family'] = 'Poppins';
 
 	return $value;
 }
 
 /**
- * Stop the parent theme from requesting Poppins via Google Fonts.
- *
- * @param string $translation Translated text.
- * @param string $text        Original text.
- * @param string $context     Text context.
- * @param string $domain      Text domain.
- * @return string
- */
-function sober_child_disable_poppins_google_font( $translation, $text, $context, $domain ) {
-	if ( 'sober' === $domain && 'Poppins font: on or off' === $context ) {
-		return 'off';
-	}
-
-	return $translation;
-}
-
-/**
- * Drop Poppins / Sofia Pro from Kirki’s Google Fonts queue.
+ * Kirki should not enqueue extra Google Fonts; the child loads the two families.
  *
  * @param array $fonts Font families and weights.
  * @return array
  */
-function sober_child_remove_kirki_poppins_sofia( $fonts ) {
-	if ( ! is_array( $fonts ) ) {
-		return $fonts;
-	}
-
-	foreach ( array_keys( $fonts ) as $family ) {
-		$normalized = strtolower( (string) $family );
-
-		if ( false !== strpos( $normalized, 'poppins' ) || false !== strpos( $normalized, 'sofia' ) ) {
-			unset( $fonts[ $family ] );
-		}
-	}
-
-	return $fonts;
+function sober_child_remove_unused_google_fonts( $fonts ) {
+	return is_array( $fonts ) ? array() : array();
 }
 
 /**
- * Dequeue parent Poppins URL and load Quicksand + the hero serif.
+ * Load Poppins + Cormorant Garamond only.
  *
  * @return void
  */
@@ -84,7 +78,7 @@ function sober_child_enqueue_fonts() {
 
 	wp_enqueue_style(
 		'sober-child-fonts',
-		'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Quicksand:wght@300;400;500;600;700&display=swap',
+		'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap',
 		array(),
 		null
 	);

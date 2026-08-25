@@ -10,10 +10,23 @@ input,
 select,
 textarea,
 .footer-widgets .widget-title,
-.shop-sidebar .widget .widget-title,
 .sober-section-heading__more,
-.vc_custom_heading .heading-link,
-.woocommerce.product-style-3 .side-products h2,
+.vc_custom_heading .heading-link {
+  font-family: Poppins, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
 .vc_custom_heading,
 .sober-section-heading,
 .sober-banner-image__title,
@@ -27,9 +40,6 @@ textarea,
 .sober-banner4 .banner-content h6,
 .sober-banner-simple__text,
 .sober-category-banner .banner-title,
-.sober-chart .text,
-.sober-pricing-table .table-header .pricing,
-.sober-countdown .box,
 .sober-product .product-title,
 .sober-collection-carousel__item-title,
 .sober-image-slider__item-text,
@@ -39,18 +49,16 @@ textarea,
 .sober-popup .popup-content h3,
 .sober-popup .popup-content h4,
 .widget-title,
+.shop-sidebar .widget .widget-title,
 .page-header .page-title,
 .project-header .project-title,
 .portfolio-items .portfolio .project-title,
 .woocommerce div.product .product_title,
-.woocommerce div.product.layout-style-5 p.price,
-.woocommerce div.product.layout-style-5 span.price,
-.woocommerce div.product.layout-style-6 p.price,
-.woocommerce div.product.layout-style-6 span.price,
 .woocommerce .upsells h2,
 .woocommerce .related h2,
+.woocommerce.product-style-3 .side-products h2,
 .wcboost-products-compare-popup__title {
-  font-family: Quicksand, sans-serif;
+  font-family: "Cormorant Garamond", "Times New Roman", Times, serif;
 }
 
 @media (max-width: 767px) {
@@ -112,7 +120,7 @@ textarea,
 
 .ss-hero__brand {
   margin: 0 0 1.25rem;
-  font-family: inherit;
+  font-family: Poppins, sans-serif;
   font-size: clamp(11px, 0.78vw, 13px);
   font-weight: 400;
   letter-spacing: 0.22em;
@@ -164,7 +172,7 @@ textarea,
   border-radius: 0;
   background: transparent;
   color: var(--ss-hero-text);
-  font-family: inherit;
+  font-family: Poppins, sans-serif;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.16em;
@@ -176,8 +184,17 @@ textarea,
   transition: background-color 280ms ease, color 280ms ease, border-color 280ms ease;
 }
 
-.ss-hero__cta:hover,
-.ss-hero__cta:focus-visible {
+.ss-hero a.ss-hero__cta:link,
+.ss-hero a.ss-hero__cta:visited {
+  color: var(--ss-hero-text);
+}
+
+.ss-hero__cta span {
+  color: inherit;
+}
+
+.ss-hero a.ss-hero__cta:hover,
+.ss-hero a.ss-hero__cta:focus-visible {
   background-color: var(--ss-hero-text);
   border-color: var(--ss-hero-text);
   color: #141210;
