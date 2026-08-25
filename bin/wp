@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+# WP-CLI wrapper for Local by Flywheel site: selfieshowroom.local
+# Usage (from anywhere):
+#   ./bin/wp option get siteurl
+#   ./bin/wp theme list
+set -euo pipefail
+
+SITE_NAME="selfieshowroom"
+SITE_URL="http://selfieshowroom.local/"
+LOCAL_SITES_JSON="${HOME}/Library/Application Support/Local/sites.json"
+LOCAL_RUN_DIR="${HOME}/Library/Application Support/Local/run"
+LOCAL_SERVICES="${HOME}/Library/Application Support/Local/lightning-services"
+WP_BIN="${WP_BIN:-/usr/local/bin/wp}"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+THEME_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+# themes/sober-child -> app/public
+PUBLIC_DIR="$(cd "${THEME_DIR}/../../.." && pwd)"
+
+if [[ ! -f "${PUBLIC_DIR}/wp-load.php" ]]; then
+	echo "error: WordPress root not found at ${PUBLIC_DIR}" >&2
+	exit 1
+fi
+
+if [[ ! -f "${LOCAL_SITES_JSON}" ]]; then
+	echo "error: Local sites.json not found. Is Local installed?" >&2
+	exit 1
+fi
+
+if [[ ! -x "${WP_BIN}" ]]; then
+	LOCAL_PHAR="/Applications/Local.app/Contents/Resources/extraResources/bin/wp-cli/wp-cli.phar"
+	if [[ -f "${LOCAL_PHAR}" ]]; then
+		WP_BIN="${LOCAL_PHAR}"
+	else
+		echo "error: wp not found at ${WP_BIN}" >&2
+		exit 1
+	fi
+fi
+
+# Resolve Local site id + PHP version from sites.json
+SITE_META="$(
+	python3 - "${LOCAL_SITES_JSON}" "${SITE_NAME}" <<'PY'
+import json, sys
+path, name = sys.argv[1], sys.argv[2]
+with open(path) as f:
+    sites = json.load(f)
+for sid, site in sites.items():
+    if site.get("name") == name or site.get("domain", "").startswith(name):
+        php = site.get("services", {}).get("php", {}).get("version", "")
+        print(f"{sid}\t{php}")
+        break
+else:
+    sys.exit(1)
+PY
+)" || {
+	echo "error: Local site '${SITE_NAME}' not found in sites.json" >&2
+	exit 1
+}
+
+SITE_ID="${SITE_META%%$'\t'*}"
+PHP_VERSION="${SITE_META#*$'\t'}"
+SOCK="${LOCAL_RUN_DIR}/${SITE_ID}/mysql/mysqld.sock"
+
+if [[ ! -S "${SOCK}" ]]; then
+	echo "error: MySQL socket missing (${SOCK}). Is the Local site running?" >&2
+	exit 1
+fi
+
+# Prefer Local lightning PHP matching the site version
+PHP_BIN=""
+if [[ -n "${PHP_VERSION}" ]]; then
+	PHP_CANDIDATE="$(find "${LOCAL_SERVICES}" -path "*/php-${PHP_VERSION}*/bin/darwin-*/bin/php" -type f 2>/dev/null | head -n 1 || true)"
+	if [[ -x "${PHP_CANDIDATE}" ]]; then
+		PHP_BIN="${PHP_CANDIDATE}"
+	fi
+fi
+if [[ -z "${PHP_BIN}" ]]; then
+	PHP_BIN="$(command -v php)"
+fi
+
+exec "${PHP_BIN}" \
+	-d "mysqli.default_socket=${SOCK}" \
+	-d "pdo_mysql.default_socket=${SOCK}" \
+	"${WP_BIN}" \
+	--path="${PUBLIC_DIR}" \
+	--url="${SITE_URL}" \
+	"$@"

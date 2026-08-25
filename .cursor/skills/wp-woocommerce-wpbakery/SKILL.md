@@ -38,6 +38,7 @@ sober-child/
 ├── style.css                 # Theme header only (Template: sober)
 ├── functions.php             # Enqueues, hooks, filters
 ├── package.json              # Asset build scripts
+├── bin/wp                    # WP-CLI wrapper for Local (selfieshowroom.local)
 ├── src/
 │   ├── scss/                 # Source SCSS (edit here)
 │   │   └── main.scss
@@ -69,6 +70,18 @@ npm run prod     # compressed/minified for deploy
 - Enqueued from `functions.php` as `sober-child-main` (CSS depends on `sober-child` style.css; `filemtime` for versions)
 - Never edit compiled files under `assets/` by hand
 - Keep `style.css` for the theme header; put real styles in `src/scss/`
+
+### WP-CLI (Local)
+
+Use the child-theme wrapper (not bare `wp`):
+
+```bash
+./bin/wp option get siteurl
+./bin/wp theme list
+./bin/wp plugin list --status=active
+```
+
+Requires the Local site **selfieshowroom** to be running.
 
 Enqueue priority remains `20` on `wp_enqueue_scripts`.
 ## WooCommerce
