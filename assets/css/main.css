@@ -4,6 +4,12 @@
  *
  * Edit source files here. Compiled output: assets/css/main.css
  */
+@media (max-width: 767px) {
+  .site-branding .logo img {
+    height: 50px;
+    width: auto;
+  }
+}
 .ss-hero {
   --ss-hero-text: #f7f4f0;
   --ss-hero-text-muted: rgba(247, 244, 240, 0.82);
