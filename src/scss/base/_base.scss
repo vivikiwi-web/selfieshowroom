@@ -5,7 +5,42 @@ h3,
 	font-weight: 400;
 }
 
-// Parent hardcodes Sofia Pro here; Poppins covers Lithuanian glyphs.
-.vc_custom_heading {
+// Parent hardcodes Sofia Pro on these; Poppins covers Lithuanian glyphs.
+.vc_custom_heading,
+.sober-section-heading,
+.sober-banner-image__title,
+.sober-banner .banner-text,
+.sober-banner3 .banner-text,
+.sober-banner4 .banner-content h1,
+.sober-banner4 .banner-content h2,
+.sober-banner4 .banner-content h3,
+.sober-banner4 .banner-content h4,
+.sober-banner4 .banner-content h5,
+.sober-banner4 .banner-content h6,
+.sober-banner-simple__text,
+.sober-category-banner .banner-title,
+.sober-chart .text,
+.sober-pricing-table .table-header .pricing,
+.sober-countdown .box,
+.sober-product .product-title,
+.sober-collection-carousel__item-title,
+.sober-image-slider__item-text,
+.sober-subscribe-box__title,
+.sober-modal .modal-header h4,
+.sober-popup .popup-content h2,
+.sober-popup .popup-content h3,
+.sober-popup .popup-content h4,
+.widget-title,
+.page-header .page-title,
+.project-header .project-title,
+.portfolio-items .portfolio .project-title,
+.woocommerce div.product .product_title,
+.woocommerce div.product.layout-style-5 p.price,
+.woocommerce div.product.layout-style-5 span.price,
+.woocommerce div.product.layout-style-6 p.price,
+.woocommerce div.product.layout-style-6 span.price,
+.woocommerce .upsells h2,
+.woocommerce .related h2,
+.wcboost-products-compare-popup__title {
 	font-family: Poppins, sans-serif;
 }
