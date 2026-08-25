@@ -5,7 +5,17 @@ h3,
 	font-weight: 400;
 }
 
-// Parent hardcodes Sofia Pro on these; Poppins covers Lithuanian glyphs.
+// Parent hardcodes Sofia Pro / Poppins; Quicksand covers Lithuanian glyphs.
+body,
+button,
+input,
+select,
+textarea,
+.footer-widgets .widget-title,
+.shop-sidebar .widget .widget-title,
+.sober-section-heading__more,
+.vc_custom_heading .heading-link,
+.woocommerce.product-style-3 .side-products h2,
 .vc_custom_heading,
 .sober-section-heading,
 .sober-banner-image__title,
@@ -42,5 +52,5 @@ h3,
 .woocommerce .upsells h2,
 .woocommerce .related h2,
 .wcboost-products-compare-popup__title {
-	font-family: Poppins, sans-serif;
+	font-family: Quicksand, sans-serif;
 }

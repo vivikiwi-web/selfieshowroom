@@ -27,13 +27,6 @@ function sober_child_enqueue_scripts() {
 
 	wp_enqueue_style( 'sober-child', get_stylesheet_uri() );
 
-	wp_enqueue_style(
-		'sober-child-cormorant',
-		'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap',
-		array(),
-		null
-	);
-
 	$css_path = get_stylesheet_directory() . '/assets/css/main.css';
 	$js_path  = get_stylesheet_directory() . '/assets/js/main.js';
 
@@ -41,7 +34,7 @@ function sober_child_enqueue_scripts() {
 		wp_enqueue_style(
 			'sober-child-main',
 			get_stylesheet_directory_uri() . '/assets/css/main.css',
-			array( 'sober-child', 'sober-child-cormorant' ),
+			array( 'sober-child', 'sober-child-fonts' ),
 			(string) filemtime( $css_path )
 		);
 	}
@@ -58,7 +51,7 @@ function sober_child_enqueue_scripts() {
 }
 
 /**
- * Prefetch Google Fonts origins for the hero serif.
+ * Prefetch Google Fonts origins.
  *
  * @param array  $urls          URLs to print for resource hints.
  * @param string $relation_type The relation type the URLs are printed for.
