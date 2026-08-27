@@ -1,6 +1,10 @@
 // Header logo: Customizer height (70px) is too large on small screens.
 
 @media (max-width: 767px) {
+	.page-header {
+		background-position: left;
+	}
+
 	.site-branding .logo img {
 		height: 50px;
 		width: auto;
