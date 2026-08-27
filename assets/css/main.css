@@ -360,3 +360,15 @@ h6,
     width: 100% !important;
   }
 }
+.woocommerce .shop-toolbar .toolbar-control li.data.filter {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .shop-sidebar {
+    display: none;
+  }
+  .woocommerce .shop-toolbar .toolbar-control li.data.filter {
+    display: list-item;
+  }
+}
