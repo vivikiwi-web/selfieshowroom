@@ -1,14 +1,10 @@
+@use "../abstracts/variables" as *;
+
 // Shop catalog: filter button vs left sidebar by viewport.
 
 .woocommerce .shop-toolbar .toolbar-control li.data.filter {
 	display: none;
 }
-
-// @media (min-width: 991px) {
-// 	.woocommerce .shop-toolbar .toolbar-control li.data.filter {
-// 		display: list-item;
-// 	}
-// }
 
 @media (max-width: 992px) {
 	.shop-sidebar {
@@ -17,5 +13,262 @@
 
 	.woocommerce .shop-toolbar .toolbar-control li.data.filter {
 		display: list-item;
+	}
+}
+
+// Filter overlay + shop sidebar: one UI face (Poppins), one left edge.
+// Titles are rack labels, not editorial serif headlines.
+
+@mixin ss-filter-panel {
+	text-align: left;
+	font-family: $ss-font-body;
+	color: $ss-color-charcoal;
+
+	.widget {
+		padding: 0 0 1.75rem;
+		margin: 0 0 1.75rem;
+		border-bottom: 1px solid rgba($ss-color-ink, 0.1);
+
+		&:last-child {
+			padding-bottom: 0;
+			margin-bottom: 0;
+			border-bottom: 0;
+		}
+	}
+
+	.widget-title,
+	.widget .widget-title,
+	h2.widget-title,
+	h3.widget-title {
+		margin: 0 0 0.85rem;
+		padding: 0 0 0.65rem;
+		border-bottom: 1px solid rgba($ss-color-ink, 0.1);
+		font-family: $ss-font-body;
+		font-size: 11px;
+		font-weight: 500;
+		font-style: normal;
+		letter-spacing: 0.2em;
+		line-height: 1.3;
+		text-transform: uppercase;
+		color: $ss-color-ink;
+	}
+
+	.widget_product_categories {
+		ul,
+		ul.product-categories {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			text-align: left;
+		}
+
+		ul ul,
+		ul.children {
+			margin: 0.15rem 0 0.35rem;
+			padding: 0 0 0 1rem;
+		}
+
+		li,
+		ul.product-categories li.cat-item {
+			margin: 0;
+			padding: 0;
+			font-size: 15px;
+			font-weight: 400;
+			line-height: 1.35;
+			list-style: none;
+			text-align: left;
+		}
+
+		a,
+		ul.product-categories li.cat-item > a {
+			display: block;
+			padding: 0.55rem 0;
+			font-family: $ss-font-body;
+			font-size: 15px;
+			font-weight: 400;
+			font-style: normal;
+			letter-spacing: 0.01em;
+			line-height: 1.35;
+			text-align: left;
+			text-transform: none;
+			color: rgba($ss-color-ink, 0.58);
+			transition: color 0.2s ease;
+
+			&:hover,
+			&:focus-visible {
+				color: $ss-color-ink;
+			}
+		}
+
+		.current-cat > a,
+		ul.product-categories li.current-cat > a {
+			font-weight: 500;
+			color: $ss-color-ink;
+		}
+
+		.count {
+			float: none;
+			margin-left: 0.35em;
+			font-size: 12px;
+			font-weight: 400;
+			color: rgba($ss-color-ink, 0.4);
+		}
+	}
+
+	.widget_price_filter {
+		.price_slider {
+			margin: 1.1rem 0 1.15rem;
+		}
+
+		.ui-slider-horizontal {
+			height: 2px;
+		}
+
+		.ui-widget-content {
+			background-color: rgba($ss-color-ink, 0.12);
+		}
+
+		.ui-slider-range,
+		.ui-slider .ui-slider-handle {
+			background-color: $ss-color-charcoal;
+		}
+
+		.ui-slider .ui-slider-handle {
+			width: 14px;
+			height: 14px;
+			top: -6px;
+			border: 0;
+			border-radius: 50%;
+		}
+
+		.price_slider_amount {
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
+			position: static;
+			padding: 0;
+			text-align: left;
+
+			input[type="text"] {
+				display: none;
+			}
+
+			.clear {
+				display: none;
+			}
+
+			.price_label {
+				order: 1;
+				margin: 0 0 1.15rem;
+				font-family: $ss-font-body;
+				font-size: 13px;
+				font-weight: 400;
+				letter-spacing: 0.02em;
+				color: rgba($ss-color-ink, 0.58);
+			}
+
+			.button {
+				order: 2;
+				position: static;
+				left: auto;
+				bottom: auto;
+				width: 100%;
+				margin: 0;
+				padding: 14px 20px;
+				border: 0;
+				border-radius: 0;
+				font-family: $ss-font-body;
+				font-size: 12px;
+				font-weight: 500;
+				letter-spacing: 0.18em;
+				line-height: 1.2;
+				text-transform: uppercase;
+				color: $ss-color-ivory;
+				background-color: $ss-color-charcoal;
+				transition: background-color 0.2s ease;
+
+				&:hover,
+				&:focus-visible {
+					color: $ss-color-ivory;
+					background-color: $ss-color-charcoal-deep;
+				}
+			}
+		}
+	}
+}
+
+.shop-sidebar {
+	@include ss-filter-panel;
+}
+
+.woocommerce .shop-toolbar .filter-widgets {
+	@include ss-filter-panel;
+
+	box-sizing: border-box;
+	padding: 1.75rem 1.5rem 2rem;
+	background-color: #fff;
+
+	.close {
+		position: absolute;
+		top: 1.15rem;
+		right: 1.15rem;
+		z-index: 2;
+		float: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		margin: 0;
+		opacity: 1;
+		color: $ss-color-ink;
+
+		svg {
+			width: 16px;
+			height: 16px;
+			stroke: $ss-color-ink;
+			fill: $ss-color-ink;
+		}
+
+		&:hover,
+		&:focus-visible {
+			opacity: 1;
+			color: $ss-color-ink;
+			background-color: transparent;
+
+			svg {
+				stroke: $ss-color-ink;
+				fill: $ss-color-ink;
+			}
+		}
+	}
+
+	.widget:first-of-type .widget-title {
+		padding-right: 2.5rem;
+	}
+
+	.widget-title {
+		margin-bottom: 0.85rem;
+	}
+}
+
+@media (max-width: 767px) {
+	.woocommerce .shop-toolbar .filter-widgets {
+		padding: 1.5rem 1.35rem 2.25rem;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.shop-sidebar .widget_product_categories a,
+	.shop-sidebar .widget_price_filter .price_slider_amount .button,
+	.woocommerce .shop-toolbar .filter-widgets .widget_product_categories a,
+	.woocommerce .shop-toolbar .filter-widgets .widget_price_filter .price_slider_amount .button {
+		transition: none;
 	}
 }

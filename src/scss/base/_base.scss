@@ -47,7 +47,6 @@ h6,
 .sober-popup .popup-content h3,
 .sober-popup .popup-content h4,
 .widget-title,
-.shop-sidebar .widget .widget-title,
 .page-header .page-title,
 .project-header .project-title,
 .portfolio-items .portfolio .project-title,
@@ -57,4 +56,9 @@ h6,
 .woocommerce.product-style-3 .side-products h2,
 .wcboost-products-compare-popup__title {
 	font-family: $ss-font-display;
+}
+
+.home-icon-box img {
+	width: auto;
+	height: 60px;
 }
