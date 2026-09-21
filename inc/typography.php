@@ -1,7 +1,7 @@
 <?php
 /**
- * Site type: Cormorant Garamond headings, Poppins body.
- * Do not load Sofia Pro, Quicksand, or Raleway.
+ * Site type: Commissioner headings, Source Sans 3 body.
+ * Hero heading stays Cormorant Garamond. Do not load Sofia Pro, Quicksand, Raleway, or Poppins.
  *
  * @package Sober_Child
  */
@@ -15,7 +15,7 @@ add_action( 'wp_enqueue_scripts', 'sober_child_enqueue_fonts', 15 );
 add_action( 'enqueue_block_editor_assets', 'sober_child_enqueue_fonts', 20 );
 
 /**
- * Customizer settings that should use the display serif.
+ * Customizer settings that should use the heading sans.
  *
  * @return string[]
  */
@@ -36,7 +36,9 @@ function sober_child_heading_font_settings() {
 }
 
 /**
- * Map heading settings to Cormorant and everything else to Poppins.
+ * Map heading settings to Commissioner and everything else to Source Sans 3.
+ *
+ * Customizer size, weight, color, and transform are left unchanged.
  *
  * @param mixed  $value Option value.
  * @param string $name  Option / field name.
@@ -48,17 +50,17 @@ function sober_child_typography_map_fonts( $value, $name = '' ) {
 	}
 
 	if ( in_array( (string) $name, sober_child_heading_font_settings(), true ) ) {
-		$value['font-family'] = 'Cormorant Garamond';
+		$value['font-family'] = 'Commissioner';
 		return $value;
 	}
 
-	$value['font-family'] = 'Poppins';
+	$value['font-family'] = 'Source Sans 3';
 
 	return $value;
 }
 
 /**
- * Kirki should not enqueue extra Google Fonts; the child loads the two families.
+ * Kirki should not enqueue extra Google Fonts; the child loads the families.
  *
  * @param array $fonts Font families and weights.
  * @return array
@@ -68,7 +70,7 @@ function sober_child_remove_unused_google_fonts( $fonts ) {
 }
 
 /**
- * Load Poppins + Cormorant Garamond only.
+ * Load Commissioner, Source Sans 3, and slim Cormorant Garamond (hero only).
  *
  * @return void
  */
@@ -78,7 +80,7 @@ function sober_child_enqueue_fonts() {
 
 	wp_enqueue_style(
 		'sober-child-fonts',
-		'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap&subset=latin,latin-ext',
+		'https://fonts.googleapis.com/css2?family=Commissioner:ital,wght@0,400;0,500;0,600;0,700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap&subset=latin,latin-ext',
 		array(),
 		null
 	);

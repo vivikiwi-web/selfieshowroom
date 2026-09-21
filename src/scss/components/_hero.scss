@@ -77,9 +77,9 @@
 	animation: ss-hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.05s both;
 }
 
-.ss-hero__heading {
+h1.ss-hero__heading {
 	margin: 0 0 2.15rem;
-	font-family: $ss-font-display;
+	font-family: $ss-font-hero;
 	font-size: clamp(56px, 5vw, 88px);
 	font-weight: 400;
 	line-height: 0.94;
@@ -99,7 +99,7 @@
 
 .ss-hero__heading-accent {
 	margin-top: 0.06em;
-	font-family: $ss-font-display;
+	font-family: $ss-font-hero;
 	font-style: italic;
 	font-weight: 400;
 	font-size: 1.04em;

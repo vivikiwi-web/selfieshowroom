@@ -18,7 +18,7 @@ textarea,
 .footer-widgets .widget-title,
 .sober-section-heading__more,
 .vc_custom_heading .heading-link {
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
 }
 
 h1,
@@ -63,7 +63,7 @@ h6,
 .woocommerce .related h2,
 .woocommerce.product-style-3 .side-products h2,
 .wcboost-products-compare-popup__title {
-  font-family: "Cormorant Garamond", "Times New Roman", Times, serif;
+  font-family: Commissioner, sans-serif;
 }
 
 .home-icon-box img {
@@ -133,7 +133,7 @@ h6,
 
 .ss-hero__brand {
   margin: 0 0 1.25rem;
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-size: clamp(11px, 0.78vw, 13px);
   font-weight: 400;
   letter-spacing: 0.22em;
@@ -144,7 +144,7 @@ h6,
   animation: ss-hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.05s both;
 }
 
-.ss-hero__heading {
+h1.ss-hero__heading {
   margin: 0 0 2.15rem;
   font-family: "Cormorant Garamond", "Times New Roman", Times, serif;
   font-size: clamp(56px, 5vw, 88px);
@@ -185,7 +185,7 @@ h6,
   border-radius: 0;
   background: transparent;
   color: var(--ss-hero-text);
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.16em;
@@ -505,9 +505,16 @@ h6,
     display: list-item;
   }
 }
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.payment-required .wpcf7-response-output {
+  margin-inline: auto;
+  width: max-content;
+}
+
 .shop-sidebar {
   text-align: left;
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   color: #252525;
 }
 .shop-sidebar .widget {
@@ -527,7 +534,7 @@ h6,
   margin: 0 0 0.85rem;
   padding: 0 0 0.65rem;
   border-bottom: 1px solid rgba(20, 18, 16, 0.1);
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-size: 16px;
   font-weight: 500;
   font-style: normal;
@@ -562,7 +569,7 @@ h6,
 .shop-sidebar .widget_product_categories ul.product-categories li.cat-item > a {
   display: block;
   padding: 0.55rem 0;
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-size: 15px;
   font-weight: 400;
   font-style: normal;
@@ -627,7 +634,7 @@ h6,
 .shop-sidebar .widget_price_filter .price_slider_amount .price_label {
   order: 1;
   margin: 0 0 1.15rem;
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -643,7 +650,7 @@ h6,
   padding: 14px 20px;
   border: 0;
   border-radius: 0;
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.18em;
@@ -660,7 +667,7 @@ h6,
 
 .woocommerce .shop-toolbar .filter-widgets {
   text-align: left;
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   color: #252525;
 }
 .woocommerce .shop-toolbar .filter-widgets .widget {
@@ -680,7 +687,7 @@ h6,
   margin: 0 0 0.85rem;
   padding: 0 0 0.65rem;
   border-bottom: 1px solid rgba(20, 18, 16, 0.1);
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-size: 16px;
   font-weight: 500;
   font-style: normal;
@@ -715,7 +722,7 @@ h6,
 .woocommerce .shop-toolbar .filter-widgets .widget_product_categories ul.product-categories li.cat-item > a {
   display: block;
   padding: 0.55rem 0;
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-size: 15px;
   font-weight: 400;
   font-style: normal;
@@ -780,7 +787,7 @@ h6,
 .woocommerce .shop-toolbar .filter-widgets .widget_price_filter .price_slider_amount .price_label {
   order: 1;
   margin: 0 0 1.15rem;
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -796,7 +803,7 @@ h6,
   padding: 14px 20px;
   border: 0;
   border-radius: 0;
-  font-family: Poppins, sans-serif;
+  font-family: "Source Sans 3", sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.18em;
