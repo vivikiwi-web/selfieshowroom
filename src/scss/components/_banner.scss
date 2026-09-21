@@ -3,6 +3,19 @@
 
 @use "../abstracts/variables" as *;
 
+.sober-banner-grid-6 {
+	padding: 0;
+}
+
+.woocommerce div.product .product_meta {
+	font-size: 14px;
+}
+
+.woocommerce .woocommerce-breadcrumb a,
+.woocommerce .woocommerce-breadcrumb .fa {
+	color: #000000;
+}
+
 @mixin ss-banner-overlay {
 	isolation: isolate;
 

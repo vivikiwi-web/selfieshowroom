@@ -44,7 +44,7 @@
 		padding: 0 0 0.65rem;
 		border-bottom: 1px solid rgba($ss-color-ink, 0.1);
 		font-family: $ss-font-body;
-		font-size: 11px;
+		font-size: 16px;
 		font-weight: 500;
 		font-style: normal;
 		letter-spacing: 0.2em;
@@ -282,4 +282,8 @@
 .woocommerce ul.products li.product .woocommerce-loop-product__title,
 .woocommerce ul.products li.product h3 {
 	font-size: 18px;
+}
+
+.nav-menu li {
+	margin-right: 18px;
 }
