@@ -1,0 +1,182 @@
+// Banner Image (sober_banner) + Banner Image 3 in the category mosaic.
+// Scrim sits on the photo wrapper (a / .banner-wrapper), not the padded outer box.
+
+@use "../abstracts/variables" as *;
+
+@mixin ss-banner-overlay {
+	isolation: isolate;
+
+	> a,
+	> .banner-wrapper {
+		position: relative;
+		display: block;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+			pointer-events: none;
+		}
+	}
+
+	.banner-content {
+		z-index: 2;
+	}
+}
+
+@mixin ss-banner-film {
+	> a::after,
+	> .banner-wrapper::after {
+		@content;
+	}
+}
+
+@mixin ss-banner-light-shadow {
+	.banner-desc,
+	.banner-text,
+	.sober-button {
+		text-shadow:
+			0 1px 1px rgba($ss-color-ink, 0.28),
+			0 6px 18px rgba($ss-color-ink, 0.32);
+	}
+}
+
+@mixin ss-banner-dark-shadow {
+	.banner-desc,
+	.banner-text,
+	.sober-button {
+		text-shadow:
+			0 1px 1px rgba($ss-color-ivory, 0.75),
+			0 8px 20px rgba($ss-color-ivory, 0.5);
+	}
+}
+
+@mixin ss-banner-plain {
+	> a::after,
+	> .banner-wrapper::after {
+		content: none;
+	}
+
+	.banner-desc,
+	.banner-text,
+	.sober-button {
+		text-shadow: none;
+	}
+}
+
+.sober-banner {
+	@include ss-banner-overlay;
+
+	// White type on mixed photos — ink wash, strongest behind the copy.
+	&.light-scheme {
+		@include ss-banner-light-shadow;
+
+		@include ss-banner-film {
+			background: linear-gradient(
+				90deg,
+				rgba($ss-color-ink, 0.34) 0%,
+				rgba($ss-color-ink, 0.12) 46%,
+				transparent 72%
+			);
+		}
+
+		&.text-position-right {
+			@include ss-banner-film {
+				background: linear-gradient(
+					270deg,
+					rgba($ss-color-ink, 0.34) 0%,
+					rgba($ss-color-ink, 0.12) 46%,
+					transparent 72%
+				);
+			}
+		}
+
+		&.text-position-center {
+			@include ss-banner-film {
+				background: radial-gradient(
+					ellipse at center,
+					rgba($ss-color-ink, 0.32) 0%,
+					rgba($ss-color-ink, 0.12) 42%,
+					transparent 72%
+				);
+			}
+		}
+	}
+
+	// Dark type on beige plaster — ivory wash so serif separates from the wall.
+	&.dark-scheme {
+		@include ss-banner-dark-shadow;
+
+		@include ss-banner-film {
+			background: linear-gradient(
+				90deg,
+				rgba($ss-color-ivory, 0.42) 0%,
+				rgba($ss-color-ivory, 0.14) 46%,
+				transparent 72%
+			);
+		}
+
+		&.text-position-right {
+			@include ss-banner-film {
+				background: linear-gradient(
+					270deg,
+					rgba($ss-color-ivory, 0.42) 0%,
+					rgba($ss-color-ivory, 0.14) 46%,
+					transparent 72%
+				);
+			}
+		}
+
+		&.text-position-center {
+			@include ss-banner-film {
+				background: radial-gradient(
+					ellipse at center,
+					rgba($ss-color-ivory, 0.4) 0%,
+					rgba($ss-color-ivory, 0.14) 42%,
+					transparent 72%
+				);
+			}
+		}
+	}
+
+	// WPBakery extra class: skip scrim when the photo already has contrast.
+	&.ss-banner--plain {
+		@include ss-banner-plain;
+	}
+}
+
+// Category mosaic tiles: labels sit bottom-left, so the wash rises from the hem.
+.sober-banner3 {
+	@include ss-banner-overlay;
+
+	&.light-scheme {
+		@include ss-banner-light-shadow;
+
+		@include ss-banner-film {
+			background: linear-gradient(
+				0deg,
+				rgba($ss-color-ink, 0.4) 0%,
+				rgba($ss-color-ink, 0.14) 22%,
+				transparent 52%
+			);
+		}
+	}
+
+	&.dark-scheme {
+		@include ss-banner-dark-shadow;
+
+		@include ss-banner-film {
+			background: linear-gradient(
+				0deg,
+				rgba($ss-color-ivory, 0.45) 0%,
+				rgba($ss-color-ivory, 0.14) 22%,
+				transparent 52%
+			);
+		}
+	}
+
+	&.ss-banner--plain {
+		@include ss-banner-plain;
+	}
+}

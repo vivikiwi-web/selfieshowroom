@@ -316,6 +316,116 @@ h6,
     transform: none;
   }
 }
+.sober-banner {
+  isolation: isolate;
+}
+.sober-banner > a,
+.sober-banner > .banner-wrapper {
+  position: relative;
+  display: block;
+}
+.sober-banner > a::after,
+.sober-banner > .banner-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.sober-banner .banner-content {
+  z-index: 2;
+}
+.sober-banner.light-scheme .banner-desc,
+.sober-banner.light-scheme .banner-text,
+.sober-banner.light-scheme .sober-button {
+  text-shadow: 0 1px 1px rgba(20, 18, 16, 0.28), 0 6px 18px rgba(20, 18, 16, 0.32);
+}
+.sober-banner.light-scheme > a::after,
+.sober-banner.light-scheme > .banner-wrapper::after {
+  background: linear-gradient(90deg, rgba(20, 18, 16, 0.34) 0%, rgba(20, 18, 16, 0.12) 46%, transparent 72%);
+}
+.sober-banner.light-scheme.text-position-right > a::after,
+.sober-banner.light-scheme.text-position-right > .banner-wrapper::after {
+  background: linear-gradient(270deg, rgba(20, 18, 16, 0.34) 0%, rgba(20, 18, 16, 0.12) 46%, transparent 72%);
+}
+.sober-banner.light-scheme.text-position-center > a::after,
+.sober-banner.light-scheme.text-position-center > .banner-wrapper::after {
+  background: radial-gradient(ellipse at center, rgba(20, 18, 16, 0.32) 0%, rgba(20, 18, 16, 0.12) 42%, transparent 72%);
+}
+.sober-banner.dark-scheme .banner-desc,
+.sober-banner.dark-scheme .banner-text,
+.sober-banner.dark-scheme .sober-button {
+  text-shadow: 0 1px 1px rgba(247, 244, 240, 0.75), 0 8px 20px rgba(247, 244, 240, 0.5);
+}
+.sober-banner.dark-scheme > a::after,
+.sober-banner.dark-scheme > .banner-wrapper::after {
+  background: linear-gradient(90deg, rgba(247, 244, 240, 0.42) 0%, rgba(247, 244, 240, 0.14) 46%, transparent 72%);
+}
+.sober-banner.dark-scheme.text-position-right > a::after,
+.sober-banner.dark-scheme.text-position-right > .banner-wrapper::after {
+  background: linear-gradient(270deg, rgba(247, 244, 240, 0.42) 0%, rgba(247, 244, 240, 0.14) 46%, transparent 72%);
+}
+.sober-banner.dark-scheme.text-position-center > a::after,
+.sober-banner.dark-scheme.text-position-center > .banner-wrapper::after {
+  background: radial-gradient(ellipse at center, rgba(247, 244, 240, 0.4) 0%, rgba(247, 244, 240, 0.14) 42%, transparent 72%);
+}
+.sober-banner.ss-banner--plain > a::after,
+.sober-banner.ss-banner--plain > .banner-wrapper::after {
+  content: none;
+}
+.sober-banner.ss-banner--plain .banner-desc,
+.sober-banner.ss-banner--plain .banner-text,
+.sober-banner.ss-banner--plain .sober-button {
+  text-shadow: none;
+}
+
+.sober-banner3 {
+  isolation: isolate;
+}
+.sober-banner3 > a,
+.sober-banner3 > .banner-wrapper {
+  position: relative;
+  display: block;
+}
+.sober-banner3 > a::after,
+.sober-banner3 > .banner-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.sober-banner3 .banner-content {
+  z-index: 2;
+}
+.sober-banner3.light-scheme .banner-desc,
+.sober-banner3.light-scheme .banner-text,
+.sober-banner3.light-scheme .sober-button {
+  text-shadow: 0 1px 1px rgba(20, 18, 16, 0.28), 0 6px 18px rgba(20, 18, 16, 0.32);
+}
+.sober-banner3.light-scheme > a::after,
+.sober-banner3.light-scheme > .banner-wrapper::after {
+  background: linear-gradient(0deg, rgba(20, 18, 16, 0.4) 0%, rgba(20, 18, 16, 0.14) 22%, transparent 52%);
+}
+.sober-banner3.dark-scheme .banner-desc,
+.sober-banner3.dark-scheme .banner-text,
+.sober-banner3.dark-scheme .sober-button {
+  text-shadow: 0 1px 1px rgba(247, 244, 240, 0.75), 0 8px 20px rgba(247, 244, 240, 0.5);
+}
+.sober-banner3.dark-scheme > a::after,
+.sober-banner3.dark-scheme > .banner-wrapper::after {
+  background: linear-gradient(0deg, rgba(247, 244, 240, 0.45) 0%, rgba(247, 244, 240, 0.14) 22%, transparent 52%);
+}
+.sober-banner3.ss-banner--plain > a::after,
+.sober-banner3.ss-banner--plain > .banner-wrapper::after {
+  content: none;
+}
+.sober-banner3.ss-banner--plain .banner-desc,
+.sober-banner3.ss-banner--plain .banner-text,
+.sober-banner3.ss-banner--plain .sober-button {
+  text-shadow: none;
+}
+
 .newslatter-holder {
   margin: 0 !important;
   display: flex;
