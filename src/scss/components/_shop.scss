@@ -268,7 +268,18 @@
 	.shop-sidebar .widget_product_categories a,
 	.shop-sidebar .widget_price_filter .price_slider_amount .button,
 	.woocommerce .shop-toolbar .filter-widgets .widget_product_categories a,
-	.woocommerce .shop-toolbar .filter-widgets .widget_price_filter .price_slider_amount .button {
+	.woocommerce
+		.shop-toolbar
+		.filter-widgets
+		.widget_price_filter
+		.price_slider_amount
+		.button {
 		transition: none;
 	}
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-category__title,
+.woocommerce ul.products li.product .woocommerce-loop-product__title,
+.woocommerce ul.products li.product h3 {
+	font-size: 18px;
 }

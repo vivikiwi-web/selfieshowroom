@@ -741,6 +741,12 @@ h6,
     transition: none;
   }
 }
+.woocommerce ul.products li.product .woocommerce-loop-category__title,
+.woocommerce ul.products li.product .woocommerce-loop-product__title,
+.woocommerce ul.products li.product h3 {
+  font-size: 18px;
+}
+
 .footer-content h3 {
   font-size: 3.4rem;
 }
