@@ -512,6 +512,10 @@ h1.ss-hero__heading {
   width: max-content;
 }
 
+.woocommerce ul.products li.product .price {
+  font-size: 16px;
+}
+
 .shop-sidebar {
   text-align: left;
   font-family: "Source Sans 3", sans-serif;
