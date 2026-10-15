@@ -920,3 +920,16 @@ h1.ss-hero__heading {
 .woocommerce div.product form.cart .variations {
   margin: 0 0 16px 0;
 }
+
+p.form-row.form-row-wide.create-account.woocommerce-validated {
+  padding-left: 0 !important;
+}
+
+.woocommerce-checkout form.checkout .col-2 h3,
+h3#ship-to-different-address {
+  margin-left: 0 !important;
+}
+
+.woocommerce-additional-fields {
+  clear: both;
+}
