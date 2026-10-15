@@ -891,6 +891,57 @@ h1.ss-hero__heading {
   margin-right: 18px;
 }
 
+.ss-google-login {
+  margin: 0 0 1.5rem;
+}
+.ss-google-login .nsl-container,
+.ss-google-login .nsl-container-buttons {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.ss-google-login .nsl-container-buttons a {
+  margin: 0;
+}
+.ss-google-login div.nsl-container .nsl-button {
+  align-items: center;
+  background-color: #23232c !important;
+  border-radius: 0;
+  box-shadow: none !important;
+  color: #fff !important;
+  min-height: 80px;
+}
+.ss-google-login div.nsl-container .nsl-button-svg-container {
+  padding-left: 16px;
+}
+.ss-google-login div.nsl-container .nsl-button-google div.nsl-button-label-container {
+  color: #fff;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: normal;
+  margin: 0 16px 0 0;
+  padding: 10px 0;
+  text-transform: uppercase;
+}
+
+.ss-google-login__or {
+  align-items: center;
+  color: #8a8680;
+  display: flex;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 13px;
+  gap: 1rem;
+  letter-spacing: 0.06em;
+  margin: 1.35rem 0 0;
+}
+.ss-google-login__or::before, .ss-google-login__or::after {
+  background: #e4e0db;
+  content: "";
+  flex: 1;
+  height: 1px;
+}
+
 .footer-content h3 {
   font-size: 3.4rem;
 }
