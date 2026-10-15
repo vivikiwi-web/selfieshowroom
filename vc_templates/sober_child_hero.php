@@ -2,7 +2,7 @@
 /**
  * Template for [sober_child_hero] shortcode.
  *
- * Expected variables: $atts, $image_url, $link, $css_class.
+ * Expected variables: $atts, $desktop_image, $mobile_image, $link, $css_class.
  *
  * @package Sober_Child
  */
@@ -14,7 +14,9 @@ $heading        = isset( $atts['heading'] ) ? $atts['heading'] : '';
 $heading_accent = isset( $atts['heading_accent'] ) ? $atts['heading_accent'] : '';
 $button_text    = isset( $atts['button_text'] ) ? $atts['button_text'] : '';
 
-$has_image = (bool) $image_url;
+$desktop_image = isset( $desktop_image ) && is_array( $desktop_image ) ? $desktop_image : array();
+$mobile_image  = isset( $mobile_image ) && is_array( $mobile_image ) ? $mobile_image : array();
+$has_image     = ! empty( $desktop_image['url'] );
 
 $target = ! empty( $link['target'] ) ? $link['target'] : '_self';
 $rel    = ! empty( $link['rel'] ) ? $link['rel'] : '';
@@ -24,13 +26,37 @@ if ( '_blank' === $target && false === strpos( $rel, 'noopener' ) ) {
 ?>
 <section
 	class="<?php echo esc_attr( implode( ' ', array_filter( $css_class ) ) ); ?>"
-	<?php if ( $has_image ) : ?>
-		style="--ss-hero-image: url(<?php echo esc_url( $image_url ); ?>);"
-	<?php endif; ?>
 	data-ss-hero
 	aria-label="<?php echo esc_attr__( 'Selfies Showroom hero', 'sober-child' ); ?>"
 >
-	<div class="ss-hero__media" aria-hidden="true"></div>
+	<?php if ( $has_image ) : ?>
+		<div class="ss-hero__media" aria-hidden="true">
+			<picture class="ss-hero__picture">
+				<?php if ( ! empty( $mobile_image['url'] ) ) : ?>
+					<source
+						media="<?php echo esc_attr( sober_child_hero_mobile_media() ); ?>"
+						srcset="<?php echo esc_url( $mobile_image['url'] ); ?>"
+						<?php if ( ! empty( $mobile_image['type'] ) ) : ?>
+							type="<?php echo esc_attr( $mobile_image['type'] ); ?>"
+						<?php endif; ?>
+					/>
+				<?php endif; ?>
+				<img
+					class="ss-hero__image skip-lazy"
+					src="<?php echo esc_url( $desktop_image['url'] ); ?>"
+					alt=""
+					<?php if ( ! empty( $desktop_image['width'] ) && ! empty( $desktop_image['height'] ) ) : ?>
+						width="<?php echo esc_attr( (string) $desktop_image['width'] ); ?>"
+						height="<?php echo esc_attr( (string) $desktop_image['height'] ); ?>"
+					<?php endif; ?>
+					loading="eager"
+					fetchpriority="high"
+					decoding="async"
+					data-no-lazy="1"
+				/>
+			</picture>
+		</div>
+	<?php endif; ?>
 	<div class="ss-hero__overlay" aria-hidden="true"></div>
 
 	<div class="ss-hero__inner">
