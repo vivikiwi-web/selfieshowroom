@@ -11,6 +11,7 @@ defined( 'ABSPATH' ) || exit;
 
 require_once get_stylesheet_directory() . '/inc/vc-hero.php';
 require_once get_stylesheet_directory() . '/inc/typography.php';
+require_once get_stylesheet_directory() . '/inc/assets.php';
 require_once get_stylesheet_directory() . '/inc/footer.php';
 require_once get_stylesheet_directory() . '/inc/variation-order.php';
 require_once get_stylesheet_directory() . '/inc/google-login.php';
@@ -29,8 +30,7 @@ function sober_child_enqueue_scripts() {
 		wp_enqueue_style( 'sober-rtl', get_template_directory_uri() . '/rtl.css' );
 	}
 
-	wp_enqueue_style( 'sober-child', get_stylesheet_uri() );
-
+	// style.css is the theme header only. Rules live in assets/css/main.css.
 	$css_path = get_stylesheet_directory() . '/assets/css/main.css';
 	$js_path  = get_stylesheet_directory() . '/assets/js/main.js';
 
@@ -38,7 +38,7 @@ function sober_child_enqueue_scripts() {
 		wp_enqueue_style(
 			'sober-child-main',
 			get_stylesheet_directory_uri() . '/assets/css/main.css',
-			array( 'sober-child', 'sober-child-fonts' ),
+			array( 'sober-child-fonts' ),
 			(string) filemtime( $css_path )
 		);
 	}
