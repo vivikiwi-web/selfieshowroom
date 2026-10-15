@@ -11,14 +11,13 @@ defined( 'ABSPATH' ) || exit;
 
 require_once get_stylesheet_directory() . '/inc/vc-hero.php';
 require_once get_stylesheet_directory() . '/inc/typography.php';
+require_once get_stylesheet_directory() . '/inc/assets.php';
 require_once get_stylesheet_directory() . '/inc/footer.php';
 require_once get_stylesheet_directory() . '/inc/variation-order.php';
 require_once get_stylesheet_directory() . '/inc/google-login.php';
 require_once get_stylesheet_directory() . '/inc/woocommerce.php';
 
 add_action( 'wp_enqueue_scripts', 'sober_child_enqueue_scripts', 20 );
-add_action( 'wp_enqueue_scripts', 'sober_child_dequeue_unused_styles', 100 );
-add_action( 'wp_print_styles', 'sober_child_dequeue_unused_styles', 1 );
 add_filter( 'wp_resource_hints', 'sober_child_resource_hints', 10, 2 );
 
 /**
@@ -52,27 +51,6 @@ function sober_child_enqueue_scripts() {
 			(string) filemtime( $js_path ),
 			true
 		);
-	}
-}
-
-/**
- * Remove stylesheets that do not paint the storefront.
- *
- * Omnisend prints its wp-admin menu CSS on the front end, and the checkout
- * newsletter block stylesheet on every page. jQuery stays in the head because
- * WooCommerce, WPBakery, and Sober still expect it before their deferred scripts.
- *
- * @return void
- */
-function sober_child_dequeue_unused_styles() {
-	if ( is_admin() ) {
-		return;
-	}
-
-	wp_dequeue_style( 'site-styles.css' );
-
-	if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) {
-		wp_dequeue_style( 'omnisend-woocommerce-checkout-block-checkout-newsletter-subscription-block' );
 	}
 }
 
