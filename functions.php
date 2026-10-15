@@ -17,6 +17,8 @@ require_once get_stylesheet_directory() . '/inc/google-login.php';
 require_once get_stylesheet_directory() . '/inc/woocommerce.php';
 
 add_action( 'wp_enqueue_scripts', 'sober_child_enqueue_scripts', 20 );
+add_action( 'wp_enqueue_scripts', 'sober_child_dequeue_unused_styles', 100 );
+add_action( 'wp_print_styles', 'sober_child_dequeue_unused_styles', 1 );
 add_filter( 'wp_resource_hints', 'sober_child_resource_hints', 10, 2 );
 
 /**
@@ -29,8 +31,7 @@ function sober_child_enqueue_scripts() {
 		wp_enqueue_style( 'sober-rtl', get_template_directory_uri() . '/rtl.css' );
 	}
 
-	wp_enqueue_style( 'sober-child', get_stylesheet_uri() );
-
+	// style.css is the theme header only. Rules live in assets/css/main.css.
 	$css_path = get_stylesheet_directory() . '/assets/css/main.css';
 	$js_path  = get_stylesheet_directory() . '/assets/js/main.js';
 
@@ -38,7 +39,7 @@ function sober_child_enqueue_scripts() {
 		wp_enqueue_style(
 			'sober-child-main',
 			get_stylesheet_directory_uri() . '/assets/css/main.css',
-			array( 'sober-child', 'sober-child-fonts' ),
+			array( 'sober-child-fonts' ),
 			(string) filemtime( $css_path )
 		);
 	}
@@ -51,6 +52,27 @@ function sober_child_enqueue_scripts() {
 			(string) filemtime( $js_path ),
 			true
 		);
+	}
+}
+
+/**
+ * Remove stylesheets that do not paint the storefront.
+ *
+ * Omnisend prints its wp-admin menu CSS on the front end, and the checkout
+ * newsletter block stylesheet on every page. jQuery stays in the head because
+ * WooCommerce, WPBakery, and Sober still expect it before their deferred scripts.
+ *
+ * @return void
+ */
+function sober_child_dequeue_unused_styles() {
+	if ( is_admin() ) {
+		return;
+	}
+
+	wp_dequeue_style( 'site-styles.css' );
+
+	if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) {
+		wp_dequeue_style( 'omnisend-woocommerce-checkout-block-checkout-newsletter-subscription-block' );
 	}
 }
 
