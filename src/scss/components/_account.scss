@@ -1,0 +1,62 @@
+@use "../abstracts/variables" as *;
+
+// Google sits above the email fields and uses the same bar as
+// PRISIJUNGTI / REGISTRUOTIS. The mark stays in Google's colors.
+
+.ss-google-login {
+	margin: 0 0 1.5rem;
+
+	.nsl-container,
+	.nsl-container-buttons {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
+	.nsl-container-buttons a {
+		margin: 0;
+	}
+
+	div.nsl-container .nsl-button {
+		align-items: center;
+		background-color: #23232c !important;
+		border-radius: 0;
+		box-shadow: none !important;
+		color: #fff !important;
+		min-height: 80px;
+	}
+
+	div.nsl-container .nsl-button-svg-container {
+		padding-left: 16px;
+	}
+
+	div.nsl-container .nsl-button-google div.nsl-button-label-container {
+		color: #fff;
+		font-family: $ss-font-body;
+		font-size: 16px;
+		font-weight: 500;
+		letter-spacing: normal;
+		margin: 0 16px 0 0;
+		padding: 10px 0;
+		text-transform: uppercase;
+	}
+}
+
+.ss-google-login__or {
+	align-items: center;
+	color: #8a8680;
+	display: flex;
+	font-family: $ss-font-body;
+	font-size: 13px;
+	gap: 1rem;
+	letter-spacing: 0.06em;
+	margin: 1.35rem 0 0;
+
+	&::before,
+	&::after {
+		background: #e4e0db;
+		content: "";
+		flex: 1;
+		height: 1px;
+	}
+}

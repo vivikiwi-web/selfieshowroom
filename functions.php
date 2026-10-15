@@ -12,6 +12,8 @@ defined( 'ABSPATH' ) || exit;
 require_once get_stylesheet_directory() . '/inc/vc-hero.php';
 require_once get_stylesheet_directory() . '/inc/typography.php';
 require_once get_stylesheet_directory() . '/inc/footer.php';
+require_once get_stylesheet_directory() . '/inc/variation-order.php';
+require_once get_stylesheet_directory() . '/inc/google-login.php';
 require_once get_stylesheet_directory() . '/inc/woocommerce.php';
 
 add_action( 'wp_enqueue_scripts', 'sober_child_enqueue_scripts', 20 );
