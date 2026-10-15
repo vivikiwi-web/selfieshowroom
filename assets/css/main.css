@@ -71,6 +71,12 @@ h6,
   height: 60px;
 }
 
+body.header-white #topbar,
+body.header-dark #topbar,
+body.header-custom #topbar {
+  margin-bottom: 140px;
+}
+
 @media (max-width: 767px) {
   .page-header {
     background-position: left;
@@ -78,6 +84,11 @@ h6,
   .site-branding .logo img {
     height: 50px;
     width: auto;
+  }
+  body.header-white #topbar,
+  body.header-dark #topbar,
+  body.header-custom #topbar {
+    margin-bottom: 85px;
   }
 }
 .ss-hero {

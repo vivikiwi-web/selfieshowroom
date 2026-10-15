@@ -300,7 +300,7 @@ function sober_child_hero_preload() {
 
 	sober_child_hero_print_preload( $images['desktop']['url'] );
 }
-add_action( 'wp_head', 'sober_child_hero_preload', 2 );
+add_action( 'wp_head', 'sober_child_hero_preload', 1 );
 
 /**
  * Keep LiteSpeed from lazy-loading the hero image.
