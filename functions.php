@@ -14,6 +14,7 @@ require_once get_stylesheet_directory() . '/inc/typography.php';
 require_once get_stylesheet_directory() . '/inc/footer.php';
 require_once get_stylesheet_directory() . '/inc/variation-order.php';
 require_once get_stylesheet_directory() . '/inc/google-login.php';
+require_once get_stylesheet_directory() . '/inc/woocommerce.php';
 
 add_action( 'wp_enqueue_scripts', 'sober_child_enqueue_scripts', 20 );
 add_filter( 'wp_resource_hints', 'sober_child_resource_hints', 10, 2 );
